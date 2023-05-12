@@ -1,0 +1,28 @@
+{
+  "name": "resgraph-template",
+  "version": "0.0.0",
+  "scripts": {
+    "res:build": "rescript",
+    "res:clean": "rescript clean",
+    "res:dev": "rescript build -w",
+    "resgraph:build": "resgraph build",
+    "resgraph:dev": "resgraph watch",
+    "watch-app": "nodemon --watch src ./src/App.mjs"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@glennsl/rescript-fetch": "^0.2.0",
+    "@rescript/core": "^0.3.1",
+    "graphql": "^16.6.0",
+    "graphql-yoga": "^3.9.1",
+    "rescript": "^11.0.0-alpha.6",
+    "resgraph": "0.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}

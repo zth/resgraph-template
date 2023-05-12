@@ -1,0 +1,4 @@
+{
+  "src": "./src",
+  "outputFolder": "./src/schema/__generated__"
+}

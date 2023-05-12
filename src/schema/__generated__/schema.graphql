@@ -1,0 +1,160 @@
+union AddTodoResult {
+  AddTodoResultOk
+  AddTodoResultError
+}
+
+union DeleteTodoResult {
+  DeleteTodoResultOk
+  DeleteTodoResultError
+}
+
+union UpdateTodoResult {
+  UpdateTodoResultOk
+  UpdateTodoResultError
+}
+
+input AddTodoInput {
+  text: String!
+  completed: Boolean!
+}
+
+
+"""Input for updating a todo."""
+input UpdateTodoInput {
+
+  """The id of the todo to update."""
+  todoId: ID!
+
+  """Whether the todo is completed or not."""
+  completed: Boolean
+
+  """What text the todo has."""
+  text: String
+}
+
+
+"""An object with an ID."""
+interface Node {
+
+  """The id of the object."""
+  id: ID!
+}
+
+type AddTodoResultError {
+  reason: String!
+}
+
+type AddTodoResultOk {
+  addedTodo: Todo!
+}
+
+type DeleteTodoResultError {
+  reason: String!
+}
+
+type DeleteTodoResultOk {
+  deletedTodoId: ID!
+}
+
+type UpdateTodoResultError {
+
+  """What went wrong updating the todo."""
+  message: String!
+}
+
+type UpdateTodoResultOk {
+
+  """The todo that was updated."""
+  updatedTodo: Todo!
+}
+
+type Mutation {
+
+  """Add a new Todo item."""
+  addTodo(input: AddTodoInput!): AddTodoResult!
+
+  """Delete a todo."""
+  deleteTodo(todoId: ID!): DeleteTodoResult!
+
+  """Update a todo."""
+  updateTodo(input: UpdateTodoInput!): UpdateTodoResult!
+}
+
+
+"""Information about pagination in a connection."""
+type PageInfo {
+
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+
+  """The currently logged in user."""
+  me: User!
+
+  """List todos."""
+  listTodos(filterText: String, completed: Boolean, first: Int, after: String, before: String, last: Int): TodoConnection
+
+  """The current time on the server, as a timestamp."""
+  currentTime: Float
+
+  """Fetches objects given their IDs."""
+  nodes(ids: [ID!]!): [Node]!
+
+  """Fetches an object given its ID."""
+  node(id: ID!): Node
+}
+
+
+"""A single todo item."""
+type Todo implements Node {
+
+  """The text of the todo item."""
+  text: String!
+
+  """Whether the todo is completed or not."""
+  completed: Boolean!
+
+  """The id of the object."""
+  id: ID!
+}
+
+
+"""A connection to a todo."""
+type TodoConnection {
+
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [TodoEdge]
+}
+
+
+"""An edge to a todo."""
+type TodoEdge {
+
+  """The item at the end of the edge."""
+  node: Todo
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+type User implements Node {
+  name: String!
+
+  """The id of the object."""
+  id: ID!
+}
+
