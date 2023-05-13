@@ -1,17 +1,17 @@
-union TodoAddResult {
-  TodoAddResultOk
-  TodoAddResultError
-}
+union TodoAddResult = 
+  | TodoAddResultOk
+  | TodoAddResultError
 
-union TodoDeleteResult {
-  TodoDeleteResultOk
-  TodoDeleteResultError
-}
 
-union TodoUpdateResult {
-  TodoUpdateResultOk
-  TodoUpdateResultError
-}
+union TodoDeleteResult = 
+  | TodoDeleteResultOk
+  | TodoDeleteResultError
+
+
+union TodoUpdateResult = 
+  | TodoUpdateResultOk
+  | TodoUpdateResultError
+
 
 input TodoAddInput {
   text: String!
