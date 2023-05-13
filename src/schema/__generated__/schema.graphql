@@ -1,26 +1,26 @@
-union AddTodoResult {
-  AddTodoResultOk
-  AddTodoResultError
+union TodoAddResult {
+  TodoAddResultOk
+  TodoAddResultError
 }
 
-union DeleteTodoResult {
-  DeleteTodoResultOk
-  DeleteTodoResultError
+union TodoDeleteResult {
+  TodoDeleteResultOk
+  TodoDeleteResultError
 }
 
-union UpdateTodoResult {
-  UpdateTodoResultOk
-  UpdateTodoResultError
+union TodoUpdateResult {
+  TodoUpdateResultOk
+  TodoUpdateResultError
 }
 
-input AddTodoInput {
+input TodoAddInput {
   text: String!
   completed: Boolean!
 }
 
 
 """Input for updating a todo."""
-input UpdateTodoInput {
+input TodoUpdateInput {
 
   """The id of the todo to update."""
   todoId: ID!
@@ -40,29 +40,29 @@ interface Node {
   id: ID!
 }
 
-type AddTodoResultError {
+type TodoAddResultError {
   reason: String!
 }
 
-type AddTodoResultOk {
+type TodoAddResultOk {
   addedTodo: Todo!
 }
 
-type DeleteTodoResultError {
+type TodoDeleteResultError {
   reason: String!
 }
 
-type DeleteTodoResultOk {
+type TodoDeleteResultOk {
   deletedTodoId: ID!
 }
 
-type UpdateTodoResultError {
+type TodoUpdateResultError {
 
   """What went wrong updating the todo."""
   message: String!
 }
 
-type UpdateTodoResultOk {
+type TodoUpdateResultOk {
 
   """The todo that was updated."""
   updatedTodo: Todo!
@@ -71,13 +71,13 @@ type UpdateTodoResultOk {
 type Mutation {
 
   """Add a new Todo item."""
-  addTodo(input: AddTodoInput!): AddTodoResult!
+  todoAdd(input: TodoAddInput!): TodoAddResult!
 
   """Delete a todo."""
-  deleteTodo(todoId: ID!): DeleteTodoResult!
+  todoDelete(todoId: ID!): TodoDeleteResult!
 
   """Update a todo."""
-  updateTodo(input: UpdateTodoInput!): UpdateTodoResult!
+  todoUpdate(input: TodoUpdateInput!): TodoUpdateResult!
 }
 
 

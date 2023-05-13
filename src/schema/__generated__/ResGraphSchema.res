@@ -21,18 +21,18 @@ let applyConversionToInputObject: (
 
 let i_Node: ref<GraphQLInterfaceType.t> = Obj.magic({"contents": Js.null})
 let get_Node = () => i_Node.contents
-let t_AddTodoResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_AddTodoResultError = () => t_AddTodoResultError.contents
-let t_AddTodoResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_AddTodoResultOk = () => t_AddTodoResultOk.contents
-let t_DeleteTodoResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_DeleteTodoResultError = () => t_DeleteTodoResultError.contents
-let t_DeleteTodoResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_DeleteTodoResultOk = () => t_DeleteTodoResultOk.contents
-let t_UpdateTodoResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_UpdateTodoResultError = () => t_UpdateTodoResultError.contents
-let t_UpdateTodoResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
-let get_UpdateTodoResultOk = () => t_UpdateTodoResultOk.contents
+let t_TodoAddResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoAddResultError = () => t_TodoAddResultError.contents
+let t_TodoAddResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoAddResultOk = () => t_TodoAddResultOk.contents
+let t_TodoDeleteResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoDeleteResultError = () => t_TodoDeleteResultError.contents
+let t_TodoDeleteResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoDeleteResultOk = () => t_TodoDeleteResultOk.contents
+let t_TodoUpdateResultError: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoUpdateResultError = () => t_TodoUpdateResultError.contents
+let t_TodoUpdateResultOk: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoUpdateResultOk = () => t_TodoUpdateResultOk.contents
 let t_Mutation: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
 let get_Mutation = () => t_Mutation.contents
 let t_PageInfo: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
@@ -47,40 +47,40 @@ let t_TodoEdge: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
 let get_TodoEdge = () => t_TodoEdge.contents
 let t_User: ref<GraphQLObjectType.t> = Obj.magic({"contents": Js.null})
 let get_User = () => t_User.contents
-let input_AddTodoInput: ref<GraphQLInputObjectType.t> = Obj.magic({"contents": Js.null})
-let get_AddTodoInput = () => input_AddTodoInput.contents
-let input_AddTodoInput_conversionInstructions = []
-let input_UpdateTodoInput: ref<GraphQLInputObjectType.t> = Obj.magic({"contents": Js.null})
-let get_UpdateTodoInput = () => input_UpdateTodoInput.contents
-let input_UpdateTodoInput_conversionInstructions = []
-input_AddTodoInput_conversionInstructions->Array.pushMany([])
-input_UpdateTodoInput_conversionInstructions->Array.pushMany([
+let input_TodoAddInput: ref<GraphQLInputObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoAddInput = () => input_TodoAddInput.contents
+let input_TodoAddInput_conversionInstructions = []
+let input_TodoUpdateInput: ref<GraphQLInputObjectType.t> = Obj.magic({"contents": Js.null})
+let get_TodoUpdateInput = () => input_TodoUpdateInput.contents
+let input_TodoUpdateInput_conversionInstructions = []
+input_TodoAddInput_conversionInstructions->Array.pushMany([])
+input_TodoUpdateInput_conversionInstructions->Array.pushMany([
   ("completed", makeInputObjectFieldConverterFn(v => v->Nullable.toOption)),
   ("text", makeInputObjectFieldConverterFn(v => v->Nullable.toOption)),
 ])
-let union_AddTodoResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
-let get_AddTodoResult = () => union_AddTodoResult.contents
-let union_DeleteTodoResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
-let get_DeleteTodoResult = () => union_DeleteTodoResult.contents
-let union_UpdateTodoResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
-let get_UpdateTodoResult = () => union_UpdateTodoResult.contents
+let union_TodoAddResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
+let get_TodoAddResult = () => union_TodoAddResult.contents
+let union_TodoDeleteResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
+let get_TodoDeleteResult = () => union_TodoDeleteResult.contents
+let union_TodoUpdateResult: ref<GraphQLUnionType.t> = Obj.magic({"contents": Js.null})
+let get_TodoUpdateResult = () => union_TodoUpdateResult.contents
 
-let union_AddTodoResult_resolveType = (v: TodoMutations.addTodoResult) =>
+let union_TodoAddResult_resolveType = (v: TodoMutations.todoAddResult) =>
   switch v {
-  | Ok(_) => "AddTodoResultOk"
-  | Error(_) => "AddTodoResultError"
+  | Ok(_) => "TodoAddResultOk"
+  | Error(_) => "TodoAddResultError"
   }
 
-let union_DeleteTodoResult_resolveType = (v: TodoMutations.deleteTodoResult) =>
+let union_TodoDeleteResult_resolveType = (v: TodoMutations.todoDeleteResult) =>
   switch v {
-  | Ok(_) => "DeleteTodoResultOk"
-  | Error(_) => "DeleteTodoResultError"
+  | Ok(_) => "TodoDeleteResultOk"
+  | Error(_) => "TodoDeleteResultError"
   }
 
-let union_UpdateTodoResult_resolveType = (v: TodoMutations.updateTodoResult) =>
+let union_TodoUpdateResult_resolveType = (v: TodoMutations.todoUpdateResult) =>
   switch v {
-  | Ok(_) => "UpdateTodoResultOk"
-  | Error(_) => "UpdateTodoResultError"
+  | Ok(_) => "TodoUpdateResultOk"
+  | Error(_) => "TodoUpdateResultError"
   }
 
 let interface_Node_resolveType = (v: ResGraphSchemaAssets.node_resolver) =>
@@ -103,8 +103,8 @@ i_Node.contents = GraphQLInterfaceType.make({
     }->makeFields,
   resolveType: GraphQLInterfaceType.makeResolveInterfaceTypeFn(interface_Node_resolveType),
 })
-t_AddTodoResultError.contents = GraphQLObjectType.make({
-  name: "AddTodoResultError",
+t_TodoAddResultError.contents = GraphQLObjectType.make({
+  name: "TodoAddResultError",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -120,8 +120,8 @@ t_AddTodoResultError.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-t_AddTodoResultOk.contents = GraphQLObjectType.make({
-  name: "AddTodoResultOk",
+t_TodoAddResultOk.contents = GraphQLObjectType.make({
+  name: "TodoAddResultOk",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -137,8 +137,8 @@ t_AddTodoResultOk.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-t_DeleteTodoResultError.contents = GraphQLObjectType.make({
-  name: "DeleteTodoResultError",
+t_TodoDeleteResultError.contents = GraphQLObjectType.make({
+  name: "TodoDeleteResultError",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -154,8 +154,8 @@ t_DeleteTodoResultError.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-t_DeleteTodoResultOk.contents = GraphQLObjectType.make({
-  name: "DeleteTodoResultOk",
+t_TodoDeleteResultOk.contents = GraphQLObjectType.make({
+  name: "TodoDeleteResultOk",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -171,8 +171,8 @@ t_DeleteTodoResultOk.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-t_UpdateTodoResultError.contents = GraphQLObjectType.make({
-  name: "UpdateTodoResultError",
+t_TodoUpdateResultError.contents = GraphQLObjectType.make({
+  name: "TodoUpdateResultError",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -188,8 +188,8 @@ t_UpdateTodoResultError.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-t_UpdateTodoResultOk.contents = GraphQLObjectType.make({
-  name: "UpdateTodoResultOk",
+t_TodoUpdateResultOk.contents = GraphQLObjectType.make({
+  name: "TodoUpdateResultOk",
   description: ?None,
   interfaces: [],
   fields: () =>
@@ -211,47 +211,47 @@ t_Mutation.contents = GraphQLObjectType.make({
   interfaces: [],
   fields: () =>
     {
-      "addTodo": {
-        typ: get_AddTodoResult()->GraphQLUnionType.toGraphQLType->nonNull,
+      "todoAdd": {
+        typ: get_TodoAddResult()->GraphQLUnionType.toGraphQLType->nonNull,
         description: "Add a new Todo item.",
         deprecationReason: ?None,
         args: {
-          "input": {typ: get_AddTodoInput()->GraphQLInputObjectType.toGraphQLType->nonNull},
+          "input": {typ: get_TodoAddInput()->GraphQLInputObjectType.toGraphQLType->nonNull},
         }->makeArgs,
         resolve: makeResolveFn((src, args, ctx) => {
           let src = typeUnwrapper(src)
-          TodoMutations.addTodo(
+          TodoMutations.todoAdd(
             src,
             ~input=args["input"]->applyConversionToInputObject(
-              input_AddTodoInput_conversionInstructions,
+              input_TodoAddInput_conversionInstructions,
             ),
           )
         }),
       },
-      "deleteTodo": {
-        typ: get_DeleteTodoResult()->GraphQLUnionType.toGraphQLType->nonNull,
+      "todoDelete": {
+        typ: get_TodoDeleteResult()->GraphQLUnionType.toGraphQLType->nonNull,
         description: "Delete a todo.",
         deprecationReason: ?None,
         args: {"todoId": {typ: Scalars.id->Scalars.toGraphQLType->nonNull}}->makeArgs,
         resolve: makeResolveFn((src, args, ctx) => {
           let src = typeUnwrapper(src)
-          TodoMutations.deleteTodo(src, ~todoId=args["todoId"])
+          TodoMutations.todoDelete(src, ~todoId=args["todoId"])
         }),
       },
-      "updateTodo": {
-        typ: get_UpdateTodoResult()->GraphQLUnionType.toGraphQLType->nonNull,
+      "todoUpdate": {
+        typ: get_TodoUpdateResult()->GraphQLUnionType.toGraphQLType->nonNull,
         description: "Update a todo.",
         deprecationReason: ?None,
         args: {
-          "input": {typ: get_UpdateTodoInput()->GraphQLInputObjectType.toGraphQLType->nonNull},
+          "input": {typ: get_TodoUpdateInput()->GraphQLInputObjectType.toGraphQLType->nonNull},
         }->makeArgs,
         resolve: makeResolveFn((src, args, ctx) => {
           let src = typeUnwrapper(src)
-          TodoMutations.updateTodo(
+          TodoMutations.todoUpdate(
             src,
             ~ctx,
             ~input=args["input"]->applyConversionToInputObject(
-              input_UpdateTodoInput_conversionInstructions,
+              input_TodoUpdateInput_conversionInstructions,
             ),
           )
         }),
@@ -497,8 +497,8 @@ t_User.contents = GraphQLObjectType.make({
       },
     }->makeFields,
 })
-input_AddTodoInput.contents = GraphQLInputObjectType.make({
-  name: "AddTodoInput",
+input_TodoAddInput.contents = GraphQLInputObjectType.make({
+  name: "TodoAddInput",
   description: ?None,
   fields: () =>
     {
@@ -514,8 +514,8 @@ input_AddTodoInput.contents = GraphQLInputObjectType.make({
       },
     }->makeFields,
 })
-input_UpdateTodoInput.contents = GraphQLInputObjectType.make({
-  name: "UpdateTodoInput",
+input_TodoUpdateInput.contents = GraphQLInputObjectType.make({
+  name: "TodoUpdateInput",
   description: "Input for updating a todo.",
   fields: () =>
     {
@@ -536,23 +536,23 @@ input_UpdateTodoInput.contents = GraphQLInputObjectType.make({
       },
     }->makeFields,
 })
-union_AddTodoResult.contents = GraphQLUnionType.make({
-  name: "AddTodoResult",
+union_TodoAddResult.contents = GraphQLUnionType.make({
+  name: "TodoAddResult",
   description: ?None,
-  types: () => [get_AddTodoResultError(), get_AddTodoResultOk()],
-  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_AddTodoResult_resolveType),
+  types: () => [get_TodoAddResultError(), get_TodoAddResultOk()],
+  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_TodoAddResult_resolveType),
 })
-union_DeleteTodoResult.contents = GraphQLUnionType.make({
-  name: "DeleteTodoResult",
+union_TodoDeleteResult.contents = GraphQLUnionType.make({
+  name: "TodoDeleteResult",
   description: ?None,
-  types: () => [get_DeleteTodoResultError(), get_DeleteTodoResultOk()],
-  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_DeleteTodoResult_resolveType),
+  types: () => [get_TodoDeleteResultError(), get_TodoDeleteResultOk()],
+  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_TodoDeleteResult_resolveType),
 })
-union_UpdateTodoResult.contents = GraphQLUnionType.make({
-  name: "UpdateTodoResult",
+union_TodoUpdateResult.contents = GraphQLUnionType.make({
+  name: "TodoUpdateResult",
   description: ?None,
-  types: () => [get_UpdateTodoResultError(), get_UpdateTodoResultOk()],
-  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_UpdateTodoResult_resolveType),
+  types: () => [get_TodoUpdateResultError(), get_TodoUpdateResultOk()],
+  resolveType: GraphQLUnionType.makeResolveUnionTypeFn(union_TodoUpdateResult_resolveType),
 })
 
 let schema = GraphQLSchemaType.make({"query": get_Query(), "mutation": get_Mutation()})
