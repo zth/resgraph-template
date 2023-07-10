@@ -69,7 +69,7 @@ let deleteTodo = async (~todoId) => {
   switch todos->Array.findIndexOpt(t => t.id === todoId) {
   | None => Error("Todo not found.")
   | Some(idx) =>
-    todos->Array.spliceInPlace(~start=idx, ~remove=1, ~insert=[])
+    todos->Array.splice(~start=idx, ~remove=1, ~insert=[])
     Ok(todoId)
   }
 }

@@ -83,7 +83,7 @@ let union_TodoUpdateResult_resolveType = (v: TodoMutations.todoUpdateResult) =>
   | Error(_) => "TodoUpdateResultError"
   }
 
-let interface_Node_resolveType = (v: ResGraphSchemaAssets.node_resolver) =>
+let interface_Node_resolveType = (v: Interface_node.Resolver.t) =>
   switch v {
   | Todo(_) => "Todo"
   | User(_) => "User"

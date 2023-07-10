@@ -1,21 +1,19 @@
-open ResGraphSchemaAssets
-
 /** Type map holding a mapping from type name to its compressed value. Keep
   adding to this as you implement the node interface for more types.
   Remember that all ints should be unique in the type map, and you should
   preferably never re-use the same int twice even if you remove types. */
-let typeMap: node_typeMap<int> = {
+let typeMap: Interface_node.typeMap<int> = {
   user: 1,
   todo: 2,
 }
 
 /** A typemap helping us produce compressed node IDs via the map defined above. */
-let nodeTypeMap = NodeInterfaceTypeMap.make(typeMap, ~valueToString=Int.toString)
+let nodeTypeMap = Interface_node.TypeMap.make(typeMap, ~valueToString=Int.toString)
 
 let decodeNodeInterfaceId = id => {
   switch id->ResGraph.idToString->ResGraph.Utils.Base64.decode->String.split(":")->List.fromArray {
   | list{typeValue, id, ...params} =>
-    switch nodeTypeMap->NodeInterfaceTypeMap.getTypeByStringifiedValue(typeValue) {
+    switch nodeTypeMap->Interface_node.TypeMap.getTypeByStringifiedValue(typeValue) {
     | None => None
     | Some(typ) => Some(typ, id, params->List.toArray)
     }
@@ -30,8 +28,8 @@ let dbIdForType = (id, typ) =>
   | _ => None
   }
 
-let nodeInterfaceIdToString = (~typename: node_implementedBy, ~id, ~extra=[]) => {
-  let value = nodeTypeMap->NodeInterfaceTypeMap.getStringifiedValueByType(typename)
+let nodeInterfaceIdToString = (~typename: Interface_node.ImplementedBy.t, ~id, ~extra=[]) => {
+  let value = nodeTypeMap->Interface_node.TypeMap.getStringifiedValueByType(typename)
   let nodeId = [value, id]->Array.concat(extra)->Array.joinWith(":")
 
   nodeId->ResGraph.Utils.Base64.encode->ResGraph.id
@@ -39,7 +37,9 @@ let nodeInterfaceIdToString = (~typename: node_implementedBy, ~id, ~extra=[]) =>
 
 /** Fetches an object given its ID. */
 @gql.field
-let node = async (_: Schema.query, ~id, ~ctx: ResGraphContext.context): option<node_resolver> => {
+let node = async (_: Schema.query, ~id, ~ctx: ResGraphContext.context): option<
+  Interface_node.Resolver.t,
+> => {
   switch decodeNodeInterfaceId(id) {
   | None => None
   | Some(typename, id, _extraParams) =>
@@ -66,6 +66,6 @@ let nodes = (query: Schema.query, ~ids, ~ctx: ResGraphContext.context) => {
 
 /** The id of the object. */
 @gql.field
-let id = (node: NodeInterface.node, ~typename: node_implementedBy) => {
+let id = (node: NodeInterface.node, ~typename: Interface_node.ImplementedBy.t) => {
   nodeInterfaceIdToString(~typename, ~id=node.id)
 }
