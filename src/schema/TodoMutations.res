@@ -34,8 +34,8 @@ let todoUpdate = async (
   | (Some(todoId), Some(_currentUserId)) =>
     switch await PretendDb.updateTodo(~todoId, ~updater=todo => {
       ...todo,
-      completed: input.completed->Option.getWithDefault(todo.completed),
-      text: input.text->Option.getWithDefault(todo.text),
+      completed: input.completed->Option.getOr(todo.completed),
+      text: input.text->Option.getOr(todo.text),
     }) {
     | Ok(newTodo) => Ok({updatedTodo: (newTodo :> Todo.todo)})
     | Error(reason) => Error({message: reason})

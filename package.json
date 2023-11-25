@@ -2,12 +2,14 @@
   "name": "resgraph-template",
   "version": "0.0.0",
   "scripts": {
-    "res:build": "rescript",
-    "res:clean": "rescript clean",
-    "res:dev": "rescript build -w",
-    "resgraph:build": "resgraph build",
-    "resgraph:dev": "resgraph watch",
-    "watch-app": "nodemon --watch src ./src/App.mjs"
+    "build:res": "rescript",
+    "clean:res": "rescript clean",
+    "dev:res": "rescript build -w",
+    "build:resgraph": "resgraph build",
+    "build": "npm run build:res && npm run build:resgraph && npm run build:res",
+    "dev:resgraph": "resgraph watch",
+    "dev": "concurrently 'npm:dev:*'",
+    "dev:watch-app": "nodemon --watch src ./src/App.mjs"
   },
   "keywords": [
     "rescript"
@@ -16,14 +18,15 @@
   "license": "MIT",
   "dependencies": {
     "@glennsl/rescript-fetch": "^0.2.0",
-    "@rescript/core": "^0.4.0",
+    "@rescript/core": "^0.6.0",
     "graphql": "^16.6.0",
     "graphql-yoga": "^3.9.1",
-    "rescript": "11.0.0-beta.4",
-    "resgraph": "0.6.3"
+    "rescript": "11.0.0-rc.6",
+    "resgraph": "0.7.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "concurrently": "^8.2.2"
   },
   "resolutions": {
     "@rescript/core": "0.4.0"
