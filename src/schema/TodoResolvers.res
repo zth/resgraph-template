@@ -1,5 +1,12 @@
 open Todo
 
+// TODO: This is ugly and we need a better solution for connections.
+@module("resgraph/src/res/graphqlRelayConnections.mjs")
+external connectionFromArray: (
+  array<todo>,
+  ~args: ResGraph.Connections.connectionArgs,
+) => todoConnection = "connectionFromArray"
+
 /** List todos. */
 @gql.field
 let listTodos = async (
@@ -13,5 +20,5 @@ let listTodos = async (
   ~last,
 ): option<todoConnection> => {
   let todos = await ctx.dataLoaders.todo.list->DataLoader.load({filterText, completed})
-  todos->ResGraph.Connections.connectionFromArray(~args={first, after, before, last})->Some
+  todos->connectionFromArray(~args={first, after, before, last})->Some
 }

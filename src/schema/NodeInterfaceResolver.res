@@ -8,7 +8,7 @@ let typeMap: Interface_node.typeMap<int> = {
 }
 
 /** A typemap helping us produce compressed node IDs via the map defined above. */
-let nodeTypeMap = Interface_node.TypeMap.make(typeMap, ~valueToString=Int.toString)
+let nodeTypeMap = Interface_node.TypeMap.make(typeMap, ~valueToString=v => Int.toString(v))
 
 let decodeNodeInterfaceId = id => {
   switch id->ResGraph.idToString->ResGraph.Utils.Base64.decode->String.split(":")->List.fromArray {
@@ -30,7 +30,7 @@ let dbIdForType = (id, typ) =>
 
 let nodeInterfaceIdToString = (~typename: Interface_node.ImplementedBy.t, ~id, ~extra=[]) => {
   let value = nodeTypeMap->Interface_node.TypeMap.getStringifiedValueByType(typename)
-  let nodeId = [value, id]->Array.concat(extra)->Array.joinWith(":")
+  let nodeId = [value, id]->Array.concat(extra)->Array.join(":")
 
   nodeId->ResGraph.Utils.Base64.encode->ResGraph.id
 }

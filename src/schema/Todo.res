@@ -12,8 +12,8 @@ type todo = {
 
 /** An edge to a todo. */
 @gql.type
-type todoEdge = ResGraph.Connections.edge<todo>
+type todoEdge = {...ResGraph.Connections.edge<todo>}
 
 /** A connection to a todo. */
 @gql.type
-type todoConnection = ResGraph.Connections.connection<todoEdge>
+type todoConnection = {...ResGraph.Connections.connection<todoEdge>}
